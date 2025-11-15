@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Masai Calculator</title>
+
+<style>
+    /* BOX MODEL + BASIC RESET */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #eef4ff;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* CALCULATOR BOX */
+    .calculator {
+        width: 320px;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* DISPLAY */
+    #display {
+        width: 100%;
+        height: 60px;
+        margin-bottom: 15px;
+        border: 2px solid #3a7afe;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 28px;
+        text-align: right;
+        outline: none;
+    }
+
+    /* GRID LAYOUT FOR BUTTONS */
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+    }
+
+    /* BUTTON STYLING */
+    .btn {
+        background: #dbe8ff;
+        padding: 18px;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+        border: 2px solid #b0c6ff;
+        transition: 0.2s;
+    }
+
+    /* CSS SELECTOR + COMBINATOR */
+    .buttons > .btn.operator {
+        background: #ffd46e;
+        border-color: #f2b600;
+    }
+
+    .buttons > .btn.equal {
+        background: #3a7afe;
+        color: white;
+        border-color: #0044ff;
+    }
+
+    /* HOVER EFFECT */
+    .btn:hover {
+        background: #c7d9ff;
+        transform: scale(1.05);
+    }
+
+    /* ACTIVE CLICK EFFECT */
+    .btn:active {
+        background: #a8c0ff;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="calculator">
+
+    <!-- DISPLAY BOX -->
+    <input type="text" id="display" disabled>
+
+    <!-- BUTTON GRID -->
+    <div class="buttons">
+        <div class="btn operator" onclick="press('C')">C</div>
+        <div class="btn operator" onclick="press('/')">/</div>
+        <div class="btn operator" onclick="press('*')">*</div>
+        <div class="btn operator" onclick="press('Back')">⌫</div>
+
+        <div class="btn" onclick="press('7')">7</div>
+        <div class="btn" onclick="press('8')">8</div>
+        <div class="btn" onclick="press('9')">9</div>
+        <div class="btn operator" onclick="press('-')">-</div>
+
+        <div class="btn" onclick="press('4')">4</div>
+        <div class="btn" onclick="press('5')">5</div>
+        <div class="btn" onclick="press('6')">6</div>
+        <div class="btn operator" onclick="press('+')">+</div>
+
+        <div class="btn" onclick="press('1')">1</div>
+        <div class="btn" onclick="press('2')">2</div>
+        <div class="btn" onclick="press('3')">3</div>
+        <div class="btn equal" onclick="calculate()">=</div>
+
+        <div class="btn" onclick="press('0')">0</div>
+        <div class="btn" onclick="press('.')">.</div>
+    </div>
+
+</div>
+
+<script>
+    let display = document.getElementById("display");
+
+    function press(val) {
+        if (val === "C") {
+            display.value = "";
+        } 
+        else if (val === "Back") {
+            display.value = display.value.slice(0, -1);
+        }
+        else {
+            display.value += val;
+        }
+    }
+
+    function calculate() {
+        try {
+            display.value = eval(display.value);
+        } catch {
+            display.value = "Error";
+        }
+    }
+</script>
+
+</body>
+</html>
