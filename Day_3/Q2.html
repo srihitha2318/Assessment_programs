@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Weekly Schedule</title>
+
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 45px;
+        margin-bottom: 20px;
+        color: #002d55;
+    }
+
+    .schedule {
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 120px repeat(5, 1fr);
+        gap: 12px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .time {
+        background-color: #c6f5fc;
+        padding: 12px;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+    .day {
+        background-color: #f4b5d8;
+        padding: 12px;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+    .yellow {
+        background-color: #f9eb7f;
+        border-radius: 20px;
+        padding: 12px;
+    }
+
+    .pink {
+        background-color: #f9c4dd;
+        border-radius: 20px;
+        padding: 12px;
+    }
+
+    .blue {
+        background-color: #99e6ff;
+        border-radius: 20px;
+        padding: 12px;
+    }
+
+    .note {
+        grid-column: 1 / 7;
+        background-color: #b9eaf2;
+        padding: 15px;
+        border-radius: 20px;
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: left;
+        padding-left: 20px;
+    }
+
+</style>
+
+</head>
+<body>
+
+<h1>Weekly Schedule</h1>
+
+<div class="schedule">
+
+    <!-- Day headings -->
+    <div></div>
+    <div class="day">Monday</div>
+    <div class="day">Tuesday</div>
+    <div class="day">Wednesday</div>
+    <div class="day">Thursday</div>
+    <div class="day">Friday</div>
+
+    <!-- Time & Subjects -->
+    <div class="time">08:00 AM</div>
+    <div class="pink">Math</div>
+    <div class="yellow">English</div>
+    <div class="pink">Science</div>
+    <div class="yellow">PT</div>
+    <div class="pink">Drawing</div>
+
+    <div class="time">09:00 AM</div>
+    <div class="yellow">EVS</div>
+    <div class="pink">Math</div>
+    <div class="yellow">Music</div>
+    <div class="pink">English</div>
+    <div class="yellow">Library</div>
+
+    <div class="time">10:00 AM</div>
+    <div class="pink">Science</div>
+    <div class="yellow">EVS</div>
+    <div class="pink">Math</div>
+    <div class="yellow">PT</div>
+    <div class="pink">Games</div>
+
+    <div class="time">11:00 AM</div>
+    <div class="yellow">Hindi</div>
+    <div class="pink">English</div>
+    <div class="yellow">Math</div>
+    <div class="pink">Computer</div>
+    <div class="yellow">Craft</div>
+
+    <div class="time">12:00 PM</div>
+    <div class="pink">Lunch</div>
+    <div class="yellow">Lunch</div>
+    <div class="pink">Lunch</div>
+    <div class="yellow">Lunch</div>
+    <div class="pink">Lunch</div>
+
+    <div class="time">1:00 PM</div>
+    <div class="yellow">PT</div>
+    <div class="pink">Science</div>
+    <div class="yellow">Dance</div>
+    <div class="pink">Math</div>
+    <div class="yellow">English</div>
+
+    <div class="time">2:00 PM</div>
+    <div class="pink">Activity</div>
+    <div class="yellow">EVS</div>
+    <div class="pink">Craft</div>
+    <div class="yellow">Games</div>
+    <div class="pink">Yoga</div>
+
+    <div class="time">3:00 PM</div>
+    <div class="yellow">Computer</div>
+    <div class="pink">Math</div>
+    <div class="yellow">English</div>
+    <div class="pink">Hindi</div>
+    <div class="yellow">Music</div>
+
+    <div class="time">4:00 PM</div>
+    <div class="pink">Sports</div>
+    <div class="yellow">Games</div>
+    <div class="pink">Activity</div>
+    <div class="yellow">PT</div>
+    <div class="pink">Story</div>
+
+    <!-- Note section -->
+    <div class="note">Note:</div>
+
+</div>
+
+</body>
+</html>
