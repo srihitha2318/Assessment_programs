@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Grid</title>
+
+<style>
+    .grid {
+        width: 80%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .box {
+        height: 150px;
+        border-radius: 6px;
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Colors */
+    .b2 { background-color: #ff5722; } /* Orange */
+    .b3 { background-color: #3f51b5; } /* Blue */
+    .b4 { background-color: #ffeb3b; color: #000; } /* Yellow */
+
+    .b5 { background-color: #9c27b0; } /* Purple */
+    .b6 { background-color: #4caf50; } /* Green */
+    .b1 { background-color: #03a9f4; } /* Light Blue */
+
+    .b7 { background-color: #ff7043; } /* Light Orange */
+    .b8 { background-color: #009688; } /* Teal */
+    .b9 { background-color: #7b0000; } /* Maroon */
+
+</style>
+</head>
+<body>
+
+<div class="grid">
+    <div class="box b2">1.</div>
+    <div class="box b3">2.</div>
+    <div class="box b4">3.</div>
+
+    <div class="box b5">4.</div>
+    <div class="box b6">5.</div>
+    <div class="box b1">6.</div>
+
+    <div class="box b7">7.</div>
+    <div class="box b8">8.</div>
+    <div class="box b9">9.</div>
+</div>
+
+</body>
+</html>
