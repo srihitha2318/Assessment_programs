@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save and Load User Notes</title>
+</head>
+<body>
+
+    <h2>Save and Load User Notes</h2>
+
+    <!-- 
+        Textarea where the user will type their notes.
+        It will also display saved notes when loaded.
+    -->
+    <textarea id="notesArea" rows="8" cols="40" placeholder="Type your notes here..."></textarea>
+    <br><br>
+
+    <!-- Buttons for saving, loading, and clearing notes -->
+    <button id="saveBtn">Save Notes</button>
+    <button id="loadBtn">Load Notes</button>
+    <button id="clearBtn">Clear Notes</button>
+
+    <script>
+        // -------------------------------
+        // GET REFERENCES TO HTML ELEMENTS
+        // -------------------------------
+        let notesArea = document.getElementById("notesArea");
+        let saveBtn = document.getElementById("saveBtn");
+        let loadBtn = document.getElementById("loadBtn");
+        let clearBtn = document.getElementById("clearBtn");
+
+
+
+        // ----------------------------------------------------
+        // 1. ON PAGE LOAD → CHECK IF NOTES EXIST IN STORAGE
+        // ----------------------------------------------------
+        window.onload = function () {
+            // Get notes from localStorage
+            let savedNotes = localStorage.getItem("userNotes");
+
+            // If notes are found, show them inside the textarea
+            if (savedNotes) {
+                notesArea.value = savedNotes;
+            }
+        };
+
+
+
+        // -------------------------------------
+        // 2. SAVE NOTES BUTTON → STORE NOTES
+        // -------------------------------------
+        saveBtn.addEventListener("click", function () {
+
+            // Get text entered by the user
+            let text = notesArea.value.trim();
+
+            // Validation: do not save empty notes
+            if (text === "") {
+                alert("Please type something before saving.");
+                return;
+            }
+
+            // Save the notes in localStorage
+            localStorage.setItem("userNotes", text);
+
+            alert("Notes saved successfully!");
+        });
+
+
+
+        // ------------------------------------
+        // 3. LOAD NOTES BUTTON → RETRIEVE
+        // ------------------------------------
+        loadBtn.addEventListener("click", function () {
+
+            let savedNotes = localStorage.getItem("userNotes");
+
+            if (savedNotes) {
+                notesArea.value = savedNotes;
+            } else {
+                alert("No saved notes found!");
+            }
+        });
+
+
+
+        // ----------------------------------------
+        // 4. CLEAR NOTES BUTTON → DELETE STORAGE
+        // ----------------------------------------
+        clearBtn.addEventListener("click", function () {
+
+            // Remove the stored notes
+            localStorage.removeItem("userNotes");
+
+            // Clear the textarea also
+            notesArea.value = "";
+
+            alert("Notes cleared successfully!");
+        });
+    </script>
+
+</body>
+</html>
