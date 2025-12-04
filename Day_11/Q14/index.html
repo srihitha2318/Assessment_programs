@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>L1 - Enhanced Todo List</title>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .task { 
+            padding: 8px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            margin-bottom: 8px; 
+            display: flex; 
+            justify-content: space-between;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>L1 - Enhanced Todo List</h2>
+
+    <!-- Input for adding tasks -->
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button id="addBtn">Add Task</button>
+
+    <br><br>
+
+    <!-- Search bar for filtering tasks -->
+    <input type="text" id="searchInput" placeholder="Search tasks...">
+
+    <h3>Tasks</h3>
+    <div id="taskList"></div>
+
+
+    <script>
+        // ---------------------------------------------------
+        // Get HTML element references
+        // ---------------------------------------------------
+        let taskInput = document.getElementById("taskInput");
+        let addBtn = document.getElementById("addBtn");
+        let searchInput = document.getElementById("searchInput");
+        let taskList = document.getElementById("taskList");
+
+        // ---------------------------------------------------
+        // Load tasks from localStorage (if any)
+        // ---------------------------------------------------
+        let tasks = JSON.parse(localStorage.getItem("todos")) || [];
+
+        renderTasks();   // Display stored tasks on page load
+
+
+
+        // ---------------------------------------------------
+        // Function: Add a new task
+        // ---------------------------------------------------
+        addBtn.addEventListener("click", function () {
+            let text = taskInput.value.trim();
+
+            // validation
+            if (text === "") {
+                alert("Task cannot be empty!");
+                return;
+            }
+
+            // Create a new task object
+            let newTask = {
+                id: Date.now(),     // unique ID for task
+                text: text,
+                completed: false
+            };
+
+            tasks.push(newTask);
+            saveTasks();
+            renderTasks();
+
+            taskInput.value = "";  // Clear input box
+        });
+
+
+
+        // ---------------------------------------------------
+        // Function: Save tasks to localStorage
+        // ---------------------------------------------------
+        function saveTasks() {
+            localStorage.setItem("todos", JSON.stringify(tasks));
+        }
+
+
+
+        // ---------------------------------------------------
+        // Function: Render tasks (show tasks on screen)
+        // ---------------------------------------------------
+        function renderTasks() {
+            taskList.innerHTML = "";  // Clear old items
+
+            // Get current search value
+            let searchText = searchInput.value.toLowerCase();
+
+            tasks
+                .filter(task => task.text.toLowerCase().includes(searchText)) 
+                .forEach(task => {
+                
+                // Create task container
+                let div = document.createElement("div");
+                div.className = "task";
+
+                // Apply completed styling
+                if (task.completed) {
+                    div.classList.add("completed");
+                }
+
+                // Task text
+                let p = document.createElement("p");
+                p.textContent = task.text;
+
+                // Button: Toggle Complete
+                let completeBtn = document.createElement("button");
+                completeBtn.textContent = task.completed ? "Undo" : "Done";
+
+                completeBtn.addEventListener("click", function () {
+                    task.completed = !task.completed;
+                    saveTasks();
+                    renderTasks();
+                });
+
+                // Button: Delete Task
+                let deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "Delete";
+
+                deleteBtn.addEventListener("click", function () {
+                    tasks = tasks.filter(t => t.id !== task.id);
+                    saveTasks();
+                    renderTasks();
+                });
+
+                // Add elements to task div
+                div.appendChild(p);
+                div.appendChild(completeBtn);
+                div.appendChild(deleteBtn);
+
+                // Add to the main list
+                taskList.appendChild(div);
+            });
+        }
+
+
+
+        // ---------------------------------------------------
+        // Real-time search: Re-render tasks as user types
+        // ---------------------------------------------------
+        searchInput.addEventListener("input", function () {
+            renderTasks();
+        });
+    </script>
+
+</body>
+</html>
