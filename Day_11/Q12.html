@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating and Removing Elements</title>
+</head>
+<body>
+
+    <h2>Creating and Removing Elements</h2>
+
+    <!-- 
+        Button to ADD new paragraphs inside the container.
+        Every click will create one new paragraph.
+    -->
+    <button id="addBtn">Add Paragraph</button>
+
+    <!-- 
+        Button to REMOVE the LAST added paragraph.
+        It will delete paragraphs one by one from the bottom.
+    -->
+    <button id="removeBtn">Remove Last Paragraph</button>
+
+    <!-- 
+        Empty div: this is where all paragraphs will be added.
+        At the beginning it contains nothing.
+    -->
+    <div id="container" style="margin-top: 20px;"></div>
+
+
+
+    <script>
+
+        // Getting references to the two buttons and the container div
+        let addBtn = document.getElementById("addBtn");
+        let removeBtn = document.getElementById("removeBtn");
+        let container = document.getElementById("container");
+
+
+
+        // -------------------------------
+        // EVENT 1: ADD a new paragraph
+        // -------------------------------
+        addBtn.addEventListener("click", function () {
+
+            // Step 1: Create a new <p> element using createElement
+            let para = document.createElement("p");
+
+            // Step 2: Add text inside the paragraph
+            para.textContent = "This is a new paragraph.";
+
+            // Step 3: Append the paragraph to the container div
+            // This will place it at the bottom every time we add
+            container.appendChild(para);
+        });
+
+
+
+        // -----------------------------------------
+        // EVENT 2: REMOVE the LAST added paragraph
+        // -----------------------------------------
+        removeBtn.addEventListener("click", function () {
+
+            // Check if there is at least one paragraph inside the container
+            if (container.lastChild) {
+
+                // removeChild removes the LAST child element inside the container
+                container.removeChild(container.lastChild);
+            }
+        });
+
+    </script>
+
+</body>
+</html>
