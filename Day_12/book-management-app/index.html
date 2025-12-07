@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR FORM -->
+  <div class="sidebar">
+    <h2>Add Book</h2>
+
+    <form id="bookForm">
+        <input type="text" id="title" placeholder="Enter title" required>
+        <input type="text" id="author" placeholder="Enter author" required>
+        <input type="number" id="price" placeholder="Enter price" required>
+        <input type="text" id="image" placeholder="https://image-url.com">
+
+        <button type="button" onclick="createBook()">Add Book</button>
+    </form>
+  </div>
+
+  <!-- MAIN AREA -->
+  <div class="main">
+      <h2>Books List</h2>
+      <div id="booksContainer"></div>
+      <div id="noBooks" style="display:none;">No Books Available</div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
